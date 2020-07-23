@@ -52,6 +52,7 @@ jobs:
           node-version: 12
       - run: npm i
       - run: git clone https://github.com/sugarlabs/musicblocks
+      - run: gsed -i ./patch.sh 's,sed,gsed'
       - run: sh ./patch.sh
       - run: npm run dist
         env: 
