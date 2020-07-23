@@ -23,18 +23,25 @@ jobs:
       - run: npm run dist
         env: 
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          mkdir -p dist/appimage
+          mv dist/*.AppImage dist/appimage/.
 
       - name: Upload Appimage
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.AppImage
-          path: 'dist/Musicblocks*.AppImage'
+          path: 'dist/appimage/'
+      
+      - run: |
+          mkdir -p dist/snap
+          mv dist/*.snap dist/snap/.
 
       - name: Upload Snap
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks_3.1.0_amd64.snap
-          path: 'dist/Musicblocks*.snap'
+          path: 'dist/snap/'
 
   windows:
     runs-on: windows-latest
@@ -51,15 +58,14 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
-          l
-          ls dist
-          
+          mkdir -p dist/exe
+          mv dist/*.exe dist/exe/.
     
       - name: Upload Windows exe
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.exe
-          path: 'dist/Musicblocks*.exe'
+          path: 'dist/exe/'
 
   macos:
     runs-on: macos-latest
@@ -69,19 +75,20 @@ jobs:
         with:
           node-version: 12
       - run: npm i
+      - run: brew install gnu-sed
       - run: git clone https://github.com/sugarlabs/musicblocks
       - run: sh ./patch.sh
       - run: npm run dist
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          l
-          ls dist
+          mkdir -p dist/dmg
+          mv dist/*.dmg dist/dmg/.
     
       - name: Upload MacOS DMG
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.dmg
-          path: 'dist/Musicblocks*.dmg'
+          path: 'dist/dmg/'
 
       
