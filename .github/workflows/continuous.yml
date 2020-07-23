@@ -81,7 +81,7 @@ jobs:
       - run: git clone https://github.com/sugarlabs/musicblocks
 
       - name: Run gsed
-        run: gsed -i ./patch.sh 's,sed,gsed'
+        run: gsed -i 's,sed,gsed' ./patch.sh 
 
       - run: sh ./patch.sh
       - run: npm run dist
