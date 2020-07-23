@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: sh ./patch.sh
+      - run: ls; sh ./patch.sh
       - run: npm run dist
 
       - name: Upload Appimage
