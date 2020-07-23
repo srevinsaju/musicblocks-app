@@ -21,6 +21,8 @@ jobs:
       - run: git clone https://github.com/sugarlabs/musicblocks
       - run: sh ./patch.sh
       - run: npm run dist
+        env: 
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Appimage
         uses: actions/upload-artifact@v1.0.0
