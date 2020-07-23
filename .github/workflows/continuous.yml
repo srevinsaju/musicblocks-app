@@ -52,8 +52,8 @@ jobs:
           node-version: 12
       - run: npm i
       - run: git clone https://github.com/sugarlabs/musicblocks
-      - name: Run gsed
-        run: gsed -i ./patch.sh 's,sed,gsed'
+
+
       - run: sh ./patch.sh
       - run: npm run dist
         env: 
@@ -79,6 +79,10 @@ jobs:
       - run: npm i
       - run: brew install gnu-sed
       - run: git clone https://github.com/sugarlabs/musicblocks
+
+      - name: Run gsed
+        run: gsed -i ./patch.sh 's,sed,gsed'
+
       - run: sh ./patch.sh
       - run: npm run dist
         env:
