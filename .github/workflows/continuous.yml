@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm run patch
+      - run: sh ./patch.sh
       - run: npm run dist
 
       - name: Upload Appimage
@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm run patch
+      - run: sh ./patch.sh
       - run: npm run dist
       - run: |
           l
@@ -63,7 +63,7 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm run patch
+      - run: sh ./patch.sh
       - run: npm run dist
       - run: |
           l
