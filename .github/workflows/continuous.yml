@@ -11,7 +11,7 @@ on:
 
 jobs:
   linux:
-    runs-on: ubuntu-1804
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -26,6 +26,7 @@ jobs:
         with:
           name: Musicblocks-continuous-x86_64.AppImage
           path: Musicblocks-*.AppImage
+
       - name: Upload Snap
         uses: actions/upload-artifact@v1.0.0
         with:
