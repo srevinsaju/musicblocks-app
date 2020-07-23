@@ -28,13 +28,13 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.AppImage
-          path: dist/Musicblocks-*.AppImage
+          path: 'dist/Musicblocks*.AppImage'
 
       - name: Upload Snap
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks_3.1.0_amd64.snap
-          path: dist/Musicblocks-*_amd64.snap
+          path: 'dist/Musicblocks*.snap'
 
   windows:
     runs-on: windows-latest
@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.exe
-          path: dist/Musicblocks-*.exe
+          path: 'dist/Musicblocks*.exe'
 
   macos:
     runs-on: macos-latest
@@ -82,6 +82,6 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           name: Musicblocks-continuous-x86_64.dmg
-          path: dist/Musicblocks-*.dmg
+          path: 'dist/Musicblocks*.dmg'
 
       
