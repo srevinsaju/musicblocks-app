@@ -1,0 +1,78 @@
+
+
+name: Continuous
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+
+jobs:
+  linux:
+    runs-on: ubuntu-1804
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm i
+      - run: npm run patch
+      - run: npm run dist
+
+      - name: Upload Appimage
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Musicblocks-continuous-x86_64.AppImage
+          path: Musicblocks-*.AppImage
+      - name: Upload Snap
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Musicblocks_3.1.0_amd64.snap
+          path: Musicblocks-*_amd64.snap
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm i
+      - run: npm run patch
+      - run: npm run dist
+      - run: |
+          l
+          ls dist
+          
+    
+      - name: Upload Windows exe
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Musicblocks-continuous-x86_64.exe
+          path: Musicblocks-*.exe
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm i
+      - run: npm run patch
+      - run: npm run dist
+      - run: |
+          l
+          ls dist
+    
+      - name: Upload MacOS DMG
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Musicblocks-continuous-x86_64.dmg
+          path: Musicblocks-*.dmg
+
+      
