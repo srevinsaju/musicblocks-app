@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: sudo snap install snapcraft --classic
       - run: npm i
       - run: git clone https://github.com/sugarlabs/musicblocks
       - run: sh ./patch.sh
